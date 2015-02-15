@@ -9,6 +9,8 @@
 # www.smartlab.ws
 # ==================================================================
 
+library(dplyr)
+
 # Obtain data from source:
 
 if (!file.exists("./data")) {dir.create("./data")}
@@ -19,11 +21,24 @@ getdata <- function() {
       dateDownloaded <- date()
       unzip("./data/data.zip", exdir="./data")
 }
+data <- list.files("./Data", full.names=T, recursive=T, include.dirs=T)
+
+activites <- read.table(data[2])
+variables <- read.table(data[3])[,2]
+
+test <- read.table(data[18])
+names(test) <- variables
+subjects_test <- read.table(data[17], col.names="subject")
+test_activities <- read.table(data[19], col.names="activity")
+
+subjects_train <- read.table(data[31])[,1]
+train <- read.table(data[32])
+names(train) <- variables
+train_activites <- read.table(data[19])
 
 # Merges the training and the test sets to create one data set.
-train <- read.table("./Data/UCI HAR Dataset/train/X_train.txt")
-test <- read.table("./Data/UCI HAR Dataset/test/X_test.txt")
-merged <- rbind(train, test)
+
+merged <- tbl_df(train, test)
 
 # Extracts only the measurements on the mean and standard deviation 
 # for each measurement. 
