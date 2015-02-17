@@ -28,21 +28,26 @@ variables <- read.table(data[3])[,2]
 
 test <- read.table(data[18])
 names(test) <- variables
-subjects_test <- read.table(data[17], col.names="subject")
+test_subjects <- read.table(data[17], col.names="subject")
 test_activities <- read.table(data[19], col.names="activity")
+test_data <- cbind(test_subjects, test_activities, test)
+test_data <- tbl_df(test_data)
 
-subjects_train <- read.table(data[31])[,1]
 train <- read.table(data[32])
 names(train) <- variables
-train_activites <- read.table(data[19])
+train_subjects <- read.table(data[31], col.names="subject")
+train_activities <- read.table(data[33], col.names="activity")
+train_data <- cbind(train_subjects, train_activities, train)
+train_data <- tbl_df(train_data)
 
 # Merges the training and the test sets to create one data set.
 
-merged <- tbl_df(train, test)
+merged_data <- rbind(test_data, train_data)
 
 # Extracts only the measurements on the mean and standard deviation 
 # for each measurement. 
 
+extracted_data <- merged_data[,c(1,2,grep("mean\\()|std\\()", colnames(merged_data[1:267])))]
 
 # Uses descriptive activity names to name the activities in the data set.
 
