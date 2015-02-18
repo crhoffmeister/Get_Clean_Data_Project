@@ -26,7 +26,7 @@ data <- list.files("./Data", full.names=T, recursive=T, include.dirs=T)
 
 # Read descriptive variable and activity names from features.txt and activity_labels.txt.
 
-activites <- read.table(data[2])
+activities <- read.table(data[2])
 variables <- read.table(data[3])[,2]
 
 # Bind together measurements with subject and activity variables.
@@ -53,12 +53,10 @@ merged_data <- bind_rows(test_data, train_data)
 
 # Extract only the measurements on the mean and standard deviation 
 # for each measurement. 
-
-extracted_data <- merged_data[,c(1,2,grep("mean\\()|std\\()", colnames(merged_data[1:267])))]
-
 # Use descriptive activity names to name the activities in the data set.
 
-
+extracted_data <- merged_data[,c(1,2,grep("mean\\()|std\\()", colnames(merged_data[1:267])))] %>%
+    mutate(activity = factor(activity, levels=activites[,1], labels = activites[,2]))
 
 # From the data set in step 4, create a second, independent tidy data set 
 # with the average of each variable for each activity and each subject.
