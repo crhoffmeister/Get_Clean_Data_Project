@@ -17,14 +17,20 @@ if (!file.exists("./data")) {dir.create("./data")}
 source_url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 
 getdata <- function() {
-      download.file(source_url, destfile = "./data/data.zip", method="wb")
-      dateDownloaded <- date()
-      unzip("./data/data.zip", exdir="./data")
+    download.file(source_url, destfile = "./data/data.zip", method="wb")
+    dateDownloaded <- date()
+    unzip("./data/data.zip", exdir="./data")
 }
+
 data <- list.files("./Data", full.names=T, recursive=T, include.dirs=T)
+
+# Read descriptive variable and activity names from features.txt and activity_labels.txt.
 
 activites <- read.table(data[2])
 variables <- read.table(data[3])[,2]
+
+# Bind together measurements with subject and activity variables.
+# Label variables at each step.
 
 test <- read.table(data[18])
 names(test) <- variables
@@ -40,24 +46,22 @@ train_activities <- read.table(data[33], col.names="activity")
 train_data <- cbind(train_subjects, train_activities, train)
 train_data <- tbl_df(train_data)
 
-# Merges the training and the test sets to create one data set.
+# Merge the training and the test sets to create one data set.
+# Bind subject_test.txt column.
 
-merged_data <- rbind(test_data, train_data)
+merged_data <- bind_rows(test_data, train_data)
 
-# Extracts only the measurements on the mean and standard deviation 
+# Extract only the measurements on the mean and standard deviation 
 # for each measurement. 
 
 extracted_data <- merged_data[,c(1,2,grep("mean\\()|std\\()", colnames(merged_data[1:267])))]
 
-# Uses descriptive activity names to name the activities in the data set.
+# Use descriptive activity names to name the activities in the data set.
 
-      # y_test.txt & activity_labels.txt, bind subject_test.txt
 
-# Appropriately labels the data set with descriptive variable names. 
 
-      # features.txt
-
-# From the data set in step 4, creates a second, independent tidy data set 
+# From the data set in step 4, create a second, independent tidy data set 
 # with the average of each variable for each activity and each subject.
 
-      # melt by subject & activity
+extracted_data %>%
+    gather(measurement, , : , = TRUE) %>%
