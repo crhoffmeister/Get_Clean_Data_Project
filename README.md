@@ -2,7 +2,7 @@
 
 The project housed in this repository is the final course project for the Coursera Data Science Specialization course, Getting and Cleaning Data. The purpose of this project is to demonstrate an ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis.
 
-This repo contains two files. 
+This repo contains two files.
 
 The first, an R script file called <b>'run_analysis.R'</b>, collects data from the Human Activity Recognition Using Smartphones Dataset, Version 1.0. This data set is available <a href="http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones">here </a> at the UCI Machine Learning Repository. The file runs a function to retrieve the data file, unzip it into a sub-directory called 'Data' of the current R working directory.
 
