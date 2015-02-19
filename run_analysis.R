@@ -10,6 +10,7 @@
 # ==================================================================
 
 library(dplyr)
+library(tidyr)
 
 # Obtain data from source:
 
@@ -19,7 +20,11 @@ source_url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUC
 getdata <- function() {
     download.file(source_url, destfile = "./data/data.zip", method="wb")
     dateDownloaded <- date()
-    unzip("./data/data.zip", exdir="./data")
+    unzip("./data.zip", exdir="./data")
+}
+
+if (!file.exists("./data/UCI HAR Dataset")) {
+    getdata()
 }
 
 data <- list.files("./Data", full.names=T, recursive=T, include.dirs=T)
@@ -54,6 +59,7 @@ merged_data <- bind_rows(test_data, train_data)
 # Extract only the measurements on the mean and standard deviation 
 # for each measurement. 
 # Use descriptive activity names to name the activities in the data set.
+<<<<<<< HEAD
 
 extracted_data <- merged_data[,c(1,2,grep("mean\\()|std\\()", colnames(merged_data[1:267])))] %>%
     mutate(activity = factor(activity, levels=activites[,1], labels = activites[,2]))
@@ -62,3 +68,16 @@ extracted_data <- merged_data[,c(1,2,grep("mean\\()|std\\()", colnames(merged_da
 # with the average of each variable for each activity and each subject.
 
 
+=======
+# Create a second, independent tidy data set, with the average 
+# of each variable for each activity and each subject.
+
+tidy_data <- merged_data[,c(1,2,grep("mean\\()|std\\()", colnames(merged_data[1:267])))] %>%
+    tbl_df %>%
+    mutate(activity = factor(activity, levels=activities[,1], labels = activities[,2])) %>%
+    arrange(subject, activity) %>%
+    gather(measurement, value, -(subject:activity)) %>%
+    group_by(subject, activity, measurement) %>%
+    summarize(measurementMean = mean(value)) %>%
+    write.table("tidyUCI.txt", sep=",", row.names=F)
+>>>>>>> origin/master
