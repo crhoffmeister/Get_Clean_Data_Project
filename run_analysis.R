@@ -61,5 +61,4 @@ extracted_data <- merged_data[,c(1,2,grep("mean\\()|std\\()", colnames(merged_da
 # From the data set in step 4, create a second, independent tidy data set 
 # with the average of each variable for each activity and each subject.
 
-extracted_data %>%
-    gather(measurement, , : , = TRUE) %>%
+
