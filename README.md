@@ -14,6 +14,6 @@ The script then pieces together test and training data sets tables, and merges t
 
 The script then extracts only the measurements on the mean and standard deviation for each measurement, for each observation.
 
-From the data set in step 4, the script then creates a second, independent tidy data set with the average of each variable for each activity and each subject, and writes the new set to a filed called <b>'tidyUCI.csv.'</b>
+From the data set in step 4, the script then creates a second, independent tidy data set with the average of each variable for each activity and each subject, and writes the new set to a filed called <b>'tidyUCI.csv.'</b> The output file is comma separated and easily opened in Excel. As an alternative, the file may be opened in R with read.table(), specifying sep="," and header=TRUE, and otherwise using default values.
 
 The second file in this repository is a codebook called <b>'Codebook.md'</b> which details the tidy dataset created by the 'run_analysis.R' script. The codebook explains what was done to the original data, explains what each variable represents for each observation, and summarizes the tidy data output.
