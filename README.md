@@ -8,6 +8,8 @@ The first, an R script file called <b>'run_analysis.R'</b>, collects data from t
 
 The R script called 'run_analysis.R' then does the following:
 
+The script begins by loading the 'dplyr' and 'tidyr' packages into the workspace. These are required for actions later in the script.
+
 Obtains the UCI dataset, and unzips the archive file to sub-directory in the current working directory called "./data/UCI HAR Dataset/", if this specified location does not already exist.
 
 The script then pieces together test and training data sets tables, and merges the training and the test sets to create one data frame. After the merge, a separate file containing variable names is used to rename the merged set columns. These sets are described in more detail in the source documentation at UCI and in the codebook.
