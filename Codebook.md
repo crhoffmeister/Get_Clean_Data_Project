@@ -1,12 +1,12 @@
 <h1>Codebook for Coursera getdata-011 Course Project</h1>
 
-<subject
-  unique number assigned to each subject in the study
-    1...30 . Unique identifier assigned by study authors
+<p>subject</p>
+  <p>unique number assigned to each subject in the study</p>
+    - 1...30 . Unique identifier assigned by study authors
   
-activity
-  unique activity engaged in by each subject
-    factor w/ 6 levels
+<p>activity</p>
+  <p>unique activity engaged in by each subject</p>
+    - factor w/ 6 levels
       1. WALKING
       2. WALKING_UPSTAIRS
       3. WALKING_DOWNSTAIRS
