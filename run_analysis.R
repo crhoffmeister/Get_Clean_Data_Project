@@ -60,7 +60,7 @@ merged_data <- bind_rows(test_data, train_data)
 # for each measurement. 
 # Use descriptive activity names to name the activities in the data set.
 
-extracted_data <- merged_data[,c(1,2,grep("mean\\()|std\\()", colnames(merged_data[1:267])))] %>%
+extracted_data <- merged_data[,c(1,2,grep("mean\\()|std\\()", colnames(merged_data)))] %>%
       mutate(activity = factor(activity, levels=activities[,1], labels = activities[,2]))
 
 # From the data set in step 4, create a second, independent tidy data set 
@@ -70,7 +70,7 @@ extracted_data <- merged_data[,c(1,2,grep("mean\\()|std\\()", colnames(merged_da
 # Create a second, independent tidy data set, with the average 
 # of each variable for each activity and each subject.
 
-tidy_data <- merged_data[,c(1,2,grep("mean\\()|std\\()", colnames(merged_data[1:267])))] %>%
+tidy_data <- merged_data[,c(1,2,grep("mean\\()|std\\()", colnames(merged_data)))] %>%
       tbl_df %>%
       mutate(activity = factor(activity, levels=activities[,1], labels = activities[,2])) %>%
       arrange(subject, activity) %>%
