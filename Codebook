@@ -1,0 +1,129 @@
+Codebook for Coursera getdata-011 Course Project
+
+Author: Chris Hoffmeister
+Date: February 21, 2015
+
+The final tidy data set produced by the R script 'run_analysis.R' is a text file containing 11880 observations of 4 variables. Each of these variables is described below, along with the variable type, short description, and general dimensions.
+
+subject
+numeric
+unique number assigned to each subject in the study
+1	values 1:30 
+
+Note: In the original data sets, the subject values were recorded in text files ‘subject_test.txt’ and ‘subject_train.txt’.
+
+activity
+string
+unique activity engaged in by each subject
+factor w/ 6 levels
+1	WALKING
+2	WALKING_UPSTAIRS
+3	WALKING_DOWNSTAIRS
+4	SITTING
+5	STANDING
+6	LAYING
+
+Note: In the original data sets, the activity values were recorded in text files ‘y_test.txt’ and ‘y_train.txt’.
+
+measurement
+string
+label for mean of each measurement taken in the study
+factor w/66 levels
+1	tBodyAcc-mean()-X
+2	tBodyAcc-mean()-Y
+3	tBodyAcc-mean()-Z
+4	tBodyAcc-std()-X
+5	tBodyAcc-std()-Y
+6	tBodyAcc-std()-Z
+7	tGravityAcc-mean()-X
+8	tGravityAcc-mean()-Y
+9	tGravityAcc-mean()-Z
+10	tGravityAcc-std()-X
+11	tGravityAcc-std()-Y
+12	tGravityAcc-std()-Z
+13	tBodyAccJerk-mean()-X
+14	tBodyAccJerk-mean()-Y
+15	tBodyAccJerk-mean()-Z
+16	tBodyAccJerk-std()-X
+17	tBodyAccJerk-std()-Y
+18	tBodyAccJerk-std()-Z
+19	tBodyGyro-mean()-X
+20	tBodyGyro-mean()-Y
+21	tBodyGyro-mean()-Z
+22	tBodyGyro-std()-X
+23	tBodyGyro-std()-Y
+24	tBodyGyro-std()-Z
+25	tBodyGyroJerk-mean()-X
+26	tBodyGyroJerk-mean()-Y
+27	tBodyGyroJerk-mean()-Z
+28	tBodyGyroJerk-std()-X
+29	tBodyGyroJerk-std()-Y
+30	tBodyGyroJerk-std()-Z
+31	tBodyAccMag-mean()
+32	tBodyAccMag-std()
+33	tGravityAccMag-mean()
+34	tGravityAccMag-std()
+35	tBodyAccJerkMag-mean()
+36	tBodyAccJerkMag-std()
+37	tBodyGyroMag-mean()
+38	tBodyGyroMag-std()
+39	tBodyGyroJerkMag-mean()
+40	tBodyGyroJerkMag-std()
+41	fBodyAcc-mean()-X
+42	fBodyAcc-mean()-Y
+43	fBodyAcc-mean()-Z
+44	fBodyAcc-std()-X
+45	fBodyAcc-std()-Y
+46	fBodyAcc-std()-Z
+47	fBodyAccJerk-mean()-X
+48	fBodyAccJerk-mean()-Y
+49	fBodyAccJerk-mean()-Z
+50	fBodyAccJerk-std()-X
+51	fBodyAccJerk-std()-Y
+52	fBodyAccJerk-std()-Z
+53	fBodyGyro-mean()-X
+54	fBodyGyro-mean()-Y
+55	fBodyGyro-mean()-Z
+56	fBodyGyro-std()-X
+57	fBodyGyro-std()-Y
+58	fBodyGyro-std()-Z
+59	fBodyAccMag-mean()
+60	fBodyAccMag-std()
+61	fBodyBodyAccJerkMag-mean()
+62	fBodyBodyAccJerkMag-std()
+63	fBodyBodyGyroMag-mean()
+64	fBodyBodyGyroMag-std()
+65	fBodyBodyGyroJerkMag-mean()
+66	fBodyBodyGyroJerkMag-std()
+
+Note: In the original data sets, 561 measurement labels were recorded in a text file ‘features.txt’ and comprised differing results of mathematical operations carried out on the original inertial readings taken from smartphones used in the study. For the purpose of this project, only the mean and standard deviation values were extracted.
+
+measurementMean
+numeric
+mean of each measurement, for each activity, for each subject.
+values -0.99770: 0.97450
+
+Note: In the original data sets, the measurements were stored in two text files ‘X_test.txt’ and ‘X_train.txt’ comprising several thousand observations of the 561 variables noted. These were joined for this project to produce a single table for further analysis.
+
+*****
+
+END NOTES: Data for this project were taken from the following source:
+
+Human Activity Recognition Using Smartphones Dataset, Version 1.0
+
+Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
+Smartlab - Non Linear Complex Systems Laboratory
+DITEN - Universite degli Studi di Genova.
+Via Opera Pia 11A, I-16145, Genoa, Italy.
+activityrecognition@smartlab.ws
+www.smartlab.ws
+
+Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012. 
+
+Further information about the original data sets, along with downloadable data, can be found here:
+
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+
+
+
